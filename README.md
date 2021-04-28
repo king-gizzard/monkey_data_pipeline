@@ -8,15 +8,15 @@ It is also an ongoing project, with more functionality being implemented wheneve
 
 #### Windows (10)
 
-Provided a `pipeline` folder, mirroring the one provided here is present on the Desktop, open a terminal by launching `cmd` from your start menu.
-Then, navigate to the `python` subfolder by typing `cd Desktop\pipeline\python` in the terminal (and hitting `Enter`).
+Provided a `pipeline` folder, mirroring the one provided here is present on the Desktop, open a terminal by launching "cmd" from your start menu.
+Then, navigate to the `python` subfolder by typing `cd Desktop\pipeline\python` in the terminal (and hitting [Enter]).
 Note that the current directory in the terminal can be checked with the `dir` command. When the output of `dir` shows the python script names, you will have managed to find the correct directory. Congratulations.
 
 Now, scripts can be called via the command `python <script_name>`, where `<script_name>` refers to, and should be replaced by, the actual script you want to execute.
 On execution, scripts might output some information to the terminal.
 
 Usually, it is best to ignore such output and wait for the terminal to show you the same prompt symbol that was seen when you first opened it.
-Oftentimes, that would be `>`.
+Oftentimes, that would be ">".
 This indicates that the script you called has terminated and further actions would be possible on your part.
 When you executed all scripts that you wanted, you may at this point simply close the terminal window.
 
