@@ -4,9 +4,9 @@ This pipeline is designed to manage data collected in a certain behavioral field
 As such, its usecase is currently limited to a very narrow set of operations on specific files of known format.
 It is also an ongoing project, with more functionality being implemented whenever the need arises and/or the developer's schedule allows for it.
 
-### Basic operation
+## Basic operation
 
-#### Windows (10)
+### Windows (10)
 
 Provided a `pipeline` folder, mirroring the one provided here is present on the Desktop, open a terminal by launching "cmd" from your start menu.
 Then, navigate to the `python` subfolder by typing `cd Desktop\pipeline\python` in the terminal (and hitting [Enter]).
@@ -24,7 +24,7 @@ In case the output shown in the terminal contains an error message and/or a trac
 
 Who you gonna call?
 
-### Structure
+## Structure
 
 Within the `python` folder, there a multiple scripts that may be used individually, with some of the scripts depending on the previous execution of others.
 For example, `make_schedule.py` expects to find files that were previously created - or updated - by `rectifier.py`; namely, a file within `misc_files` called `protocol_list.csv`.
