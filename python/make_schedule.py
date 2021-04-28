@@ -33,10 +33,11 @@ df['time'] = pd.to_datetime(df['time'],format='%H%M').dt.time
 schedule = pd.DataFrame(columns=[
         'ID',
         'obs_latest',
-        '6-9','9-12',
-        '12-15',
-        '15-18',
-        '18-22',
+        '6_to_9',
+        '9_to_12',
+        '12_to_15',
+        '15_to_18',
+        '18_to_22',
         'obs_total'
         ])
 
@@ -78,11 +79,11 @@ for ID in individuals:
 schedule = schedule[[
         'ID',
         'obs_total',
-        '6-9',
-        '9-12',
-        '12-15',
-        '15-18',
-        '18-22',
+        '6_to_9',
+        '9_to_12',
+        '12_to_15',
+        '15_to_18',
+        '18_to_22',
         'obs_latest'
         ]]
 
