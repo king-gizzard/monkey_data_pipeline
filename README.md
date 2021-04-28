@@ -18,9 +18,9 @@ On execution, scripts might output some information to the terminal.
 Usually, it is best to ignore such output and wait for the terminal to show you the same prompt symbol that was seen when you first opened it.
 Oftentimes, that would be ">".
 This indicates that the script you called has terminated and further actions would be possible on your part.
-When you executed all scripts that you wanted, you may at this point simply close the terminal window.
+When you executed all scripts that you wanted to, you may at this point simply close the terminal window.
 
-In case the output shown in the terminal contains an error message and/or a traceback, consult with an expert on how to avoid any damages or mitigate their impact ASAP.
+In case the output shown in the terminal contains an error message and/or a traceback, consult an expert on how to avoid any damages or mitigate their impact ASAP.
 
 Who you gonna call?
 
