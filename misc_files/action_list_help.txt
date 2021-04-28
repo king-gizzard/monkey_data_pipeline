@@ -1,0 +1,24 @@
+id:
+	identifier of behaviour as seen in data
+	one of 75 unique
+	two characters, lowercase
+name:
+	corresponding name of the behaviour <id>
+	for clarity, so ppl get the <id> meaning
+	no specific requirements i.t.o. format
+n_receiver:
+	single digit, [0,1,2]
+	case 0: undirected behaviour
+	case 1: directed at one monkey
+	case 2: directed at two monkeys
+	case 2: 2nd monkey in modifier column
+	case 2: might be fucked.
+	check for detangled rows in case of
+	multiple receivers instead of modifier.
+match:
+	either 'none', if non-matching behaviour
+	or <id> of different, matching behaviour
+	e.g. sg matches eg and vice versa
+within:
+	e.g. sg-eg within sb/bs-eb/be within ap/at-de/do
+	bracketing-check...
