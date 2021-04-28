@@ -30,7 +30,15 @@ df['time'] = df['time'].astype(str).str.zfill(4)
 df['time'] = pd.to_datetime(df['time'],format='%H%M').dt.time
 
 
-schedule = pd.DataFrame(columns=['ID','obs_latest','6-9','9-12','12-15','15-18','18-22','obs_total'])
+schedule = pd.DataFrame(columns=[
+        'ID',
+        'obs_latest',
+        '6-9','9-12',
+        '12-15',
+        '15-18',
+        '18-22',
+        'obs_total'
+        ])
 
 time_slices = pd.Series([
         datetime.time(6,0),
@@ -65,5 +73,17 @@ for ID in individuals:
     #row.append(sum(slice_counts))
     row.append(all_obs)
     schedule.loc[len(schedule)] = row
+
+#reorder the columns
+schedule = schedule[[
+        'ID',
+        'obs_total',
+        '6-9',
+        '9-12',
+        '12-15',
+        '15-18',
+        '18-22',
+        'obs_latest'
+        ]]
 
 schedule.to_csv(schedule_path,index=False)
