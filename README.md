@@ -8,7 +8,7 @@ It is also an ongoing project, with more functionality being implemented wheneve
 
 ### Windows (10)
 
-Provided a `pipeline` folder, mirroring the one provided here is present on the Desktop, open a terminal by launching "cmd" from your start menu.
+Provided a `pipeline` folder - mirroring the one provided here - is present on the Desktop, open a terminal by launching "cmd" from your start menu.
 Then, navigate to the `python` subfolder by typing `cd Desktop\pipeline\python` in the terminal (and hitting [Enter]).
 Note that the current directory in the terminal can be checked with the `dir` command. When the output of `dir` shows the python script names, you will have managed to find the correct directory. Congratulations.
 
