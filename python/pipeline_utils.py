@@ -43,4 +43,13 @@ def get_file_path(filename):
     #path in data/raw
     return(os.path.join(os.pardir,'data','raw',d,filename))
 
+#find out wether or not xlsx has a Rect sheet
+#does not check for RECT<n> though, might be useful to.
+def has_rect_sheet(path):
+    df = pd.read_excel(path,sheet_name=None)
+    if 'Rect' in df.keys():
+        return(True)
+    else:
+        return(False)
+
 #def write_error_line():
