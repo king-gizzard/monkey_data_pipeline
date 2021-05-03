@@ -14,7 +14,7 @@ focal_info = get_or_make_csv(protocols_csv_path,['file','date','time','focal','d
 #make list of files in raw
 raw_files = file_list()
 
-for xlsx in raw_files#difflist:
+for xlsx in raw_files:
     print(xlsx)
     src = get_file_path(xlsx)
     #open file from ALL file list

@@ -17,8 +17,10 @@ def slice_sub_df(focal,from_time,to_time):
 protocol_list_path = os.path.join(os.pardir,'misc_files','protocols_list.csv')
 schedule_path = os.path.join(os.pardir,'misc_files','schedule.csv')
 
-#columns: [date, time, focal]
+#columns: [date, time, focal, duration]
 df = pd.read_csv(protocol_list_path)
+#remove protocols with less than 20 min duration
+df = df[df['duration'] >= 20]
 #TODO: warning, this could be slightly insane.
 #was done to remove jw/sh duplicate protocols
 df = df.drop_duplicates()
