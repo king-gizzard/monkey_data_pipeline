@@ -45,25 +45,27 @@ def check_legit_update(adj_list,mon,time,action):
 
 pd.set_option('display.max_rows', None)
 
-progress_csv_path = os.path.join(os.pardir,'misc_files','progress_list.csv')
+#progress_csv_path = os.path.join(os.pardir,'misc_files','progress_list.csv')
 monkey_csv_path = os.path.join(os.pardir,'misc_files','monkey_list.csv')
 action_csv_path = os.path.join(os.pardir,'misc_files','action_list.csv')
 mod_csv_path = os.path.join(os.pardir,'misc_files','mod_list.csv')
 error_csv_path= os.path.join(os.pardir,'misc_files','error_list.csv')
 
-prog = pd.read_csv(progress_csv_path)
+#prog = pd.read_csv(progress_csv_path)
 
 monkey_list = pd.read_csv(monkey_csv_path)#get_id_list(monkey_csv_path)
 action_list = pd.read_csv(action_csv_path)#get_id_list(action_csv_path)
 mod_list    = pd.read_csv(mod_csv_path)#get_id_list(mod_csv_path)
 
-to_check_list = list(prog[prog['status'] == 'rectified']['file'])
+#to_check_list = list(prog[prog['status'] == 'rectified']['file'])
 
 error_head= ['file','sheet','row','column','content','error']
 
 e_csv = get_or_make_csv(error_csv_path,error_head)
 
-for protocol in to_check_list:
+raw_files = file_list()
+
+for protocol in raw_files:#to_check_list:
     print(protocol)
     #time in former row, to check time continuity
     former_time = 0
@@ -72,6 +74,8 @@ for protocol in to_check_list:
 #    receiving = make_adjacency_list(monkey_list)
     #load data
     path = get_file_path(protocol)
+    if not has_rect_sheet(path):
+        continue
     head = pd.read_excel(path,sheet_name='Header',header=None,dtype=str)
     cont = pd.read_excel(path,sheet_name='Rect',dtype=str)
 #    prox = pd.read_excel(path,sheet_name='Prox')

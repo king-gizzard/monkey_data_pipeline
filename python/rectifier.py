@@ -11,7 +11,7 @@ empty_cell = 'none'
 new_sheet = 'Rect'
 #make debug print show entire frame
 pd.set_option('display.max_rows', None)
-progress_csv_path = os.path.join(os.pardir,'misc_files','progress_list.csv')
+#progress_csv_path = os.path.join(os.pardir,'misc_files','progress_list.csv')
 monkey_csv_path = os.path.join(os.pardir,'misc_files','monkey_list.csv')
 action_csv_path = os.path.join(os.pardir,'misc_files','action_list.csv')
 mod_csv_path = os.path.join(os.pardir,'misc_files','mod_list.csv')
@@ -20,7 +20,7 @@ protocols_csv_path = os.path.join(os.pardir,'misc_files','protocols_list.csv')
 #---------------------------------------------------------------------
 
 #get a csv of already seen files and their statueses
-prog = get_or_make_csv(progress_csv_path,['file','status'])
+#prog = get_or_make_csv(progress_csv_path,['file','status'])
 focal_info = get_or_make_csv(protocols_csv_path,['file','date','time','focal','duration'])
 #make list of files in raw
 raw_files = file_list()
@@ -30,26 +30,32 @@ action_list = get_id_list(action_csv_path)#'action_list.csv')
 mod_list    = get_id_list(mod_csv_path)#'mod_list.csv')
 #make list of difference
 #i.e. files in raw that were not yet rectified
-difflist = sorted(list(set(raw_files).difference(set(prog['file']))))
+#difflist = sorted(list(set(raw_files).difference(set(prog['file']))))
 
-for xlsx in difflist:
+for xlsx in raw_files:#difflist:
     print(xlsx)
     src = get_file_path(xlsx)
+    data = pd.read_excel(src,sheet_name=None)
+    #has been rectified already?
+    if 'Rect' in data.keys():
+        continue
+    cont = data['Cont']
+    #head = data['Header']
     #open file from difference list
-    cont = pd.read_excel(src,sheet_name='Cont')
-    head = pd.read_excel(src,sheet_name='Header',header=None)
-    date = head.iloc[0,1]
-    time = head.iloc[1,1]
-    focal = head.iloc[2,1]
+    #cont = pd.read_excel(src,sheet_name='Cont')
+    #head = pd.read_excel(src,sheet_name='Header',header=None)
+#    date = head.iloc[0,1]
+#    time = head.iloc[1,1]
+#    focal = head.iloc[2,1]
     #ignore files with default 'unknown monkey' as focal
     #as those have not been used for data collection
-    if focal == 'umo':
-        update_csv(prog,progress_csv_path,[xlsx,'umo_focal'])
-        continue
+#    if focal == 'umo':
+#        update_csv(prog,progress_csv_path,[xlsx,'umo_focal'])
+#        continue
     #ignore files which would be empty after time&actor-nan-removal
     #i.e. empty protocol which had a focal animal entered and nothing else.
     if all(cont['Time'].isna()) and all(cont['Action'].isna()):
-        update_csv(prog,progress_csv_path,[xlsx,'empty_cont'])
+#        update_csv(prog,progress_csv_path,[xlsx,'empty_cont'])
         continue
     #discard rows with neither time nor action (basically empty)
     cont = cont[ (~cont['Time'].isna()) | (~cont['Action'].isna()) ]
@@ -88,10 +94,10 @@ for xlsx in difflist:
     with pd.ExcelWriter(src, mode='a') as w:
         cont.to_excel(w, sheet_name=new_sheet,index=False)
     #rewrite the progress list once file is written
-    update_csv(prog,progress_csv_path,[xlsx,'rectified'])
+#    update_csv(prog,progress_csv_path,[xlsx,'rectified'])
     #append the protocol info to list of those
 #    focal_info.loc[len(focal_info)] = [xlsx,date,time,focal,list(cont['Time'])[-1]]
-    update_csv(focal_info,protocols_csv_path,[xlsx,date,time,focal,list(cont['Time'])[-1]])
+#    update_csv(focal_info,protocols_csv_path,[xlsx,date,time,focal,list(cont['Time'])[-1]])
 
 
 #TODO implement: drops=[i for i in cont.columns if all(cont[i].isnull())]
