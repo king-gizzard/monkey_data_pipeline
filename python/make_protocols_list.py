@@ -10,7 +10,9 @@ protocols_csv_path = os.path.join(os.pardir,'misc_files','protocols_list.csv')
 #
 #---------------------------------------------------------------------
 
-focal_info = get_or_make_csv(protocols_csv_path,['file','date','time','focal','duration'])
+#focal_info = get_or_make_csv(protocols_csv_path,
+header = ['file','date','time','focal','duration'])
+focal_info = pd.Dataframe(columns=header)
 #make list of files in raw
 raw_files = file_list()
 
@@ -33,4 +35,5 @@ for xlsx in raw_files:
     #i.e. empty protocol which had a focal animal entered and nothing else.
 #    if all(rect['Time'].isna()) and all(rect['Action'].isna()):
 #        continue
-    update_csv(focal_info,protocols_csv_path,[xlsx,date,time,focal,list(rect['Time'])[-1]])
+    #update_csv(focal_info,protocols_csv_path,[xlsx,date,time,focal,list(rect['Time'])[-1]])
+    focal_info.to_csv(protocols_csv_path,index=False)
