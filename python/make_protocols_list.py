@@ -11,8 +11,8 @@ protocols_csv_path = os.path.join(os.pardir,'misc_files','protocols_list.csv')
 #---------------------------------------------------------------------
 
 #focal_info = get_or_make_csv(protocols_csv_path,
-header = ['file','date','time','focal','duration'])
-focal_info = pd.Dataframe(columns=header)
+header = ['file','date','time','focal','duration']
+focal_info = pd.DataFrame(columns=header)
 #make list of files in raw
 raw_files = file_list()
 
@@ -36,4 +36,5 @@ for xlsx in raw_files:
 #    if all(rect['Time'].isna()) and all(rect['Action'].isna()):
 #        continue
     #update_csv(focal_info,protocols_csv_path,[xlsx,date,time,focal,list(rect['Time'])[-1]])
-    focal_info.to_csv(protocols_csv_path,index=False)
+    focal_info.loc[len(focal_info)] = [xlsx, date, time, focal, list(rect['Time'])[-1]]
+focal_info.to_csv(protocols_csv_path,index=False)
