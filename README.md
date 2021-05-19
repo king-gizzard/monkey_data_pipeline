@@ -4,10 +4,10 @@ This pipeline is designed to manage data collected in a certain behavioral field
 As such, its usecase is currently limited to a very narrow set of operations on specific files of known format.
 It is also an ongoing project, with more functionality being implemented whenever the need arises and/or the developer's schedule allows for it.
 
-##Table of contents
-* [Structure] (#structure)
-* [Setup] (#setup)
-* [Basic operation] (basic-operation)
+## Table of contents
+* [Structure](#structure)
+* [Setup](#setup)
+* [Basic operation](basic-operation)
 
 ## Structure
 
